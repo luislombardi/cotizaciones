@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizaciones de Acciones</title>
+</head>
+<body>
+    <h1>Cotizaciones de Acciones</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cotizacion in cotizaciones %}
+            <tr>
+                <td>{{ cotizacion['nombre'] }}</td>
+                <td>{{ cotizacion['precio'] }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="2">No se encontraron datos.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
