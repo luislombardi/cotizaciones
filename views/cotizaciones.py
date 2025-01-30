@@ -2,6 +2,7 @@
 # views/cotizaciones.py
 
 from flask import Blueprint, render_template
+import yfinance as yf  # <-- Añade esta importación
 
 cotizaciones_bp = Blueprint('cotizaciones', __name__)
 
@@ -19,11 +20,11 @@ def obtener_cotizacion(ticker):
             print(f"No se encontraron datos para {ticker}")
             return None
         
-        precio_cierre = datos["Close"].iloc[-1]  # Obtener el último precio de cierre
-        precio_apertura = datos["Open"].iloc[-1]  # Obtener el precio de apertura
-        maximo_dia = datos["High"].iloc[-1]  # Obtener el máximo del día
-        minimo_dia = datos["Low"].iloc[-1]  # Obtener el mínimo del día
-        volumen = datos["Volume"].iloc[-1]  # Obtener el volumen del día
+        precio_cierre = datos["Close"].iloc[0]  # Obtener el último precio de cierre
+        precio_apertura = datos["Open"].iloc[0]  # Obtener el precio de apertura
+        maximo_dia = datos["High"].iloc[0]  # Obtener el máximo del día
+        minimo_dia = datos["Low"].iloc[0]  # Obtener el mínimo del día
+        volumen = datos["Volume"].iloc[0]  # Obtener el volumen del día
         
         # Obtener los valores adicionales de la acción
         informacion_accion = accion.info
