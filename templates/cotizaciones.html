@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizaciones de Acciones</title>
+    <!-- Vinculamos Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Primer estilo: fondo azul oscuro con letra blanca */
+        .fondo-azul-oscuro {
+            background-color: #003366;
+            color: white;
+        }
+        
+        /* Segundo estilo: fondo celeste claro con letra negra */
+        .fondo-celeste {
+            background-color: #ADD8E6;
+            color: black;
+        }
+        
+        /* Tercer estilo: fondo blanco con letra negra */
+        .fondo-blanco {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Cotizaciones de Acciones</h1>
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr class="fondo-azul-oscuro">
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Precio Apertura</th>
+                    <th>Máximo del Día</th>
+                    <th>Mínimo del Día</th>
+                    <th>Volumen</th>
+                    <th>Rango 52 Semanas</th>
+                    <th>P/E Ratio</th>
+                    <th>Dividendos</th>
+                    <th>Market Cap</th>
+                    <th>Beta</th>
+                    <th>EPS</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cotizacion in cotizaciones %}
+                {% if loop.index is odd %}
+                <!-- Filas impares: fondo celeste claro con letra negra -->
+                <tr class="fondo-celeste">
+                {% else %}
+                <!-- Filas pares: fondo blanco con letra negra -->
+                <tr class="fondo-blanco">
+                {% endif %}
+                    <td>{{ cotizacion.nombre }}</td>
+                    <td>{{ cotizacion.precio }}</td>
+                    <td>{{ cotizacion.precio_apertura }}</td>
+                    <td>{{ cotizacion.maximo_dia }}</td>
+                    <td>{{ cotizacion.minimo_dia }}</td>
+                    <td>{{ cotizacion.volumen }}</td>
+                    <td>{{ cotizacion.rango_52_sem }}</td>
+                    <td>{{ cotizacion.pe_ratio }}</td>
+                    <td>{{ cotizacion.dividendos }}</td>
+                    <td>{{ cotizacion.market_cap }}</td>
+                    <td>{{ cotizacion.beta }}</td>
+                    <td>{{ cotizacion.eps }}</td>
+                {% else %}
+                <tr class="fondo-blanco">
+                    <td colspan="12">No se encontraron datos.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Vinculamos el JS de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
