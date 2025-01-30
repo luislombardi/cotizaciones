@@ -76,7 +76,7 @@ def index():
     print(f"Datos finales para renderizar: {resultados}")  # Depuración: Imprimir datos que se pasan a la plantilla
     
     # Pasar los datos a la plantilla
-    return render_template('index.html', cotizaciones=resultados)
+    return render_template('cotizaciones.html', cotizaciones=resultados)
 
 #if __name__ == '__main__':
 #    app.run(debug=True)
